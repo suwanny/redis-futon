@@ -3,7 +3,7 @@
 redis 127.0.0.1:6379> config get *
 
      1) "dir"
-     2) "/Users/suwanny/projects/studio_app"
+     2) "/Users/suwanny/projects/xxxx"
      3) "dbfilename"
      4) "dump.rdb"
      5) "requirepass"

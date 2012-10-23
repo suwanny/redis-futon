@@ -14,11 +14,8 @@ class FutonServer
     app.configure () ->
       app.use(express.methodOverride())
       app.use(app.router)
-      app.use(express.static(__dirname + '/../../www/public'))
+      app.use(express.static(__dirname + '/../../public'))
       app.use(express.errorHandler({ dumpExceptions: true, showStack: true }))
-      app.set("view options", {layout: false});
-      app.set('views', __dirname + '/../../www/views')
-      app.set('view engine', 'ejs')
       return
 
     # routes

@@ -10,7 +10,7 @@ A Web Interface for Redis - The goal for this app provides a couchdb-futon like 
 
 ## Dev Tools
 
-* [Yeoman](http://yeoman.io/)
+* Redis
 * AngularJS
 * NodeJS
 * CoffeeScript

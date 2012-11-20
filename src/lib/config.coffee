@@ -9,6 +9,7 @@ global.config = {
 
 global._            = require 'underscore'
 global.async        = require 'async'
+global.Step         = require 'step'
 global.FutonServer  = require './futon_server'
 global.logger       = new (require './logger')("redis_futon")
 

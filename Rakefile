@@ -59,7 +59,7 @@ task :compress => [:compile] do
 end
 
 hdoc 'run', 'run main coffee'
-task :run do
+task :run => [:compile] do
   sh "#{CoffeeBin} src/main.coffee"
 end
 

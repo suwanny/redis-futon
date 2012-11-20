@@ -14,3 +14,10 @@ A Web Interface for Redis - The goal for this app provides a couchdb-futon like 
 * AngularJS
 * NodeJS
 * CoffeeScript
+
+
+## How to start
+
+    foreman start
+
+

@@ -1,1 +1,42 @@
-<h1>Hello</h1>
+<!doctype html>
+<html lang="en" ng-app="futon">
+<head>
+  <meta charset="utf-8">
+  <title>Redis Futon</title>
+  <link rel="stylesheet" href="/css/app.css">
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <script src="/lib/angular/angular.js"></script>
+  <script src="/lib/angular/angular-resource.js"></script>
+  <script src="/app/app.js"></script>
+  <script src="/app/controllers.js"></script>
+  <script src="/app/filters.js"></script>
+  <script src="/app/services.js"></script>
+</head>
+<body>
+
+  <div class="navbar-wrapper" ng-controller="NavCtrl">
+    <div class="navbar navbar-inverse">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">Redis Futon</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class=""><a href="#"></a></li>
+              <li class=""><a href="#"></a></li>
+              <li><a href='javascript:void'></a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="futon-container" ng-view></div>
+
+</body>
+</html>

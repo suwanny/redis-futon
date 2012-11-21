@@ -8,6 +8,15 @@ Redis Web Interface
 
 A Web Interface for Redis - The goal for this app provides a couchdb-futon like web interface.
 
+# Prerequisites
+
+* Redis Server and commands 
+
+    brew install redis
+
+* NodeJS and npm
+
+
 ## Dev Tools
 
 * Redis
@@ -16,8 +25,16 @@ A Web Interface for Redis - The goal for this app provides a couchdb-futon like 
 * CoffeeScript
 
 
-## How to start
+## How to start 
+
+* when redis is running already
+
+    node index.js 5985
+    
+* with redis-server (when there is no running redis) 
 
     foreman start
+
+
 
 

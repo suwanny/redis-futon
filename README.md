@@ -1,20 +1,30 @@
 redis-futon
 ===========
 
-Redis Web Interface
-
-
-# Redis Futon
+__Redis Web Interface__
 
 A Web Interface for Redis - The goal for this app provides a couchdb-futon like web interface.
+Currenty, this is pretty much an alpha version, but it could become useable over time. :-)
 
-# Prerequisites
+
+## Prerequisites
 
 #### Redis Server and commands 
 
     brew install redis
 
 #### NodeJS and npm
+
+
+## Installation
+    
+    $ npm install redis-futon -g
+
+## Start & Use
+
+    $ redis-futon [5985]
+    $ open http://localhost:5985
+
 
 
 ## Dev Tools
@@ -30,7 +40,7 @@ A Web Interface for Redis - The goal for this app provides a couchdb-futon like 
 #### when redis is running already
 
     ./bin/redis-futon 5985
-    
+
 or
 
     node index.js 5985

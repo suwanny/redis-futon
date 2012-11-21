@@ -29,6 +29,10 @@ A Web Interface for Redis - The goal for this app provides a couchdb-futon like 
 
 #### when redis is running already
 
+    ./bin/redis-futon 5985
+    
+or
+
     node index.js 5985
 
 #### with redis-server (when there is no running redis) 

@@ -2,7 +2,7 @@
   "name": "redis-futon",
   "version": "0.0.1",
   "description": "Redis Web Interface",
-  "main": "lib/main.js",
+  "main": "index.js",
   "dependencies": {
     "redis": "0.8.1",
     "coffee-script": "1.3.3",
@@ -16,8 +16,17 @@
     "jasmine-node": "1.0.26",
     "uglify-js": "1.3.0"
   },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://raw.github.com/suwanny/redis-futon/master/LICENSE"
+    }
+  ],
   "directories": {
     "doc": "docs"
+  },
+  "bin": {
+    "redis-futon": "./bin/redis-futon"
   },
   "scripts": {
     "test": "rake spec"
@@ -30,6 +39,6 @@
     "redis",
     "futon"
   ],
-  "author": "Soo Hwan Park",
+  "author": "Soo Hwan Park (suwanny at gmail dot com)",
   "license": "BSD"
 }

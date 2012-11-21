@@ -8,6 +8,9 @@
   <link rel="stylesheet" href="/css/bootstrap.css">
   <link rel="stylesheet" href="/css/bootstrap-responsive.css">
 
+  <link rel="stylesheet" href="http://yandex.st/highlightjs/7.3/styles/default.min.css">
+  <script src="http://yandex.st/highlightjs/7.3/highlight.min.js"></script>
+
 </head>
 <body>
 
@@ -59,7 +62,139 @@
   </div> 
 
 
+  <pre>
+    {
+  "<span class="attribute">id</span>": <span class="value"><span class="string">"appliance:10.10.100.4:net_interfaces"</span></span>,
+  "<span class="attribute">data</span>": <span class="value">[
+    {
+      "<span class="attribute">mac</span>": <span class="value"><span class="string">"00:25:90:65:4c:e0"</span></span>,
+      "<span class="attribute">name</span>": <span class="value"><span class="string">"eth0"</span></span>,
+      "<span class="attribute">display_name</span>": <span class="value"><span class="string">"Mgmt"</span></span>,
+      "<span class="attribute">up</span>": <span class="value"><span class="literal">true</span></span>,
+      "<span class="attribute">v4_addr_count</span>": <span class="value"><span class="number">1</span></span>,
+      "<span class="attribute">v4_addrs</span>": <span class="value">{
+        "<span class="attribute">begin</span>": <span class="value"><span class="string">"10.10.3.234"</span></span>,
+        "<span class="attribute">end</span>": <span class="value"><span class="string">"10.10.3.234"</span>
+      }</span></span>,
+      "<span class="attribute">v4_dhcp</span>": <span class="value"><span class="literal">false</span></span>,
+      "<span class="attribute">v4_mask</span>": <span class="value"><span class="number">21</span></span>,
+      "<span class="attribute">v6_addr_count</span>": <span class="value"><span class="number">0</span></span>,
+      "<span class="attribute">v6_addrs</span>": <span class="value">{
+        "<span class="attribute">begin</span>": <span class="value"><span class="literal">null</span></span>,
+        "<span class="attribute">end</span>": <span class="value"><span class="literal">null</span>
+      }</span></span>,
+      "<span class="attribute">v6_local_addr</span>": <span class="value"><span class="string">"fe80::225:90ff:fe65:4ce0"</span></span>,
+      "<span class="attribute">v6_mask</span>": <span class="value"><span class="literal">null</span>
+    }</span>,
+    {
+      "<span class="attribute">mac</span>": <span class="value"><span class="string">"00:25:90:65:4c:e1"</span></span>,
+      "<span class="attribute">name</span>": <span class="value"><span class="string">"eth1"</span></span>,
+      "<span class="attribute">display_name</span>": <span class="value"><span class="string">"Aux"</span></span>,
+      "<span class="attribute">up</span>": <span class="value"><span class="literal">false</span></span>,
+      "<span class="attribute">v4_addr_count</span>": <span class="value"><span class="number">1</span></span>,
+      "<span class="attribute">v4_addrs</span>": <span class="value">{
+        "<span class="attribute">begin</span>": <span class="value"><span class="string">"192.168.2.1"</span></span>,
+        "<span class="attribute">end</span>": <span class="value"><span class="string">"192.168.2.1"</span>
+      }</span></span>,
+      "<span class="attribute">v4_dhcp</span>": <span class="value"><span class="literal">false</span></span>,
+      "<span class="attribute">v4_mask</span>": <span class="value"><span class="number">24</span></span>,
+      "<span class="attribute">v6_addr_count</span>": <span class="value"><span class="number">1</span></span>,
+      "<span class="attribute">v6_addrs</span>": <span class="value">{
+        "<span class="attribute">begin</span>": <span class="value"><span class="string">"2000::225:90ff:fe65:4ce1"</span></span>,
+        "<span class="attribute">end</span>": <span class="value"><span class="string">"2000::225:90ff:fe65:4ce1"</span>
+      }</span></span>,
+      "<span class="attribute">v6_local_addr</span>": <span class="value"><span class="literal">null</span></span>,
+      "<span class="attribute">v6_mask</span>": <span class="value"><span class="number">64</span>
+    }</span>,
+    {
+      "<span class="attribute">mac</span>": <span class="value"><span class="literal">null</span></span>,
+      "<span class="attribute">name</span>": <span class="value"><span class="string">"a1"</span></span>,
+      "<span class="attribute">display_name</span>": <span class="value"><span class="string">"A1"</span></span>,
+      "<span class="attribute">up</span>": <span class="value"><span class="literal">false</span></span>,
+      "<span class="attribute">v4_addr_count</span>": <span class="value"><span class="number">10</span></span>,
+      "<span class="attribute">v4_addrs</span>": <span class="value">{
+        "<span class="attribute">begin</span>": <span class="value"><span class="string">"101.10.10.10"</span></span>,
+        "<span class="attribute">end</span>": <span class="value"><span class="string">"101.10.10.19"</span>
+      }</span></span>,
+      "<span class="attribute">v4_dhcp</span>": <span class="value"><span class="literal">false</span></span>,
+      "<span class="attribute">v4_mask</span>": <span class="value"><span class="number">8</span></span>,
+      "<span class="attribute">v6_addr_count</span>": <span class="value"><span class="number">0</span></span>,
+      "<span class="attribute">v6_addrs</span>": <span class="value">{
+        "<span class="attribute">begin</span>": <span class="value"><span class="literal">null</span></span>,
+        "<span class="attribute">end</span>": <span class="value"><span class="literal">null</span>
+      }</span></span>,
+      "<span class="attribute">v6_local_addr</span>": <span class="value"><span class="literal">null</span></span>,
+      "<span class="attribute">v6_mask</span>": <span class="value"><span class="literal">null</span></span>,
+      "<span class="attribute">speed</span>": <span class="value"><span class="string">"10000Mb/s"</span>
+    }</span>,
+    {
+      "<span class="attribute">mac</span>": <span class="value"><span class="literal">null</span></span>,
+      "<span class="attribute">name</span>": <span class="value"><span class="string">"a2"</span></span>,
+      "<span class="attribute">display_name</span>": <span class="value"><span class="string">"A2"</span></span>,
+      "<span class="attribute">up</span>": <span class="value"><span class="literal">false</span></span>,
+      "<span class="attribute">v4_addr_count</span>": <span class="value"><span class="number">32</span></span>,
+      "<span class="attribute">v4_addrs</span>": <span class="value">{
+        "<span class="attribute">begin</span>": <span class="value"><span class="string">"102.0.0.1"</span></span>,
+        "<span class="attribute">end</span>": <span class="value"><span class="string">"102.0.0.32"</span>
+      }</span></span>,
+      "<span class="attribute">v4_dhcp</span>": <span class="value"><span class="literal">false</span></span>,
+      "<span class="attribute">v4_mask</span>": <span class="value"><span class="number">16</span></span>,
+      "<span class="attribute">v6_addr_count</span>": <span class="value"><span class="number">1</span></span>,
+      "<span class="attribute">v6_addrs</span>": <span class="value">{
+        "<span class="attribute">begin</span>": <span class="value"><span class="string">"2000:153::2:1"</span></span>,
+        "<span class="attribute">end</span>": <span class="value"><span class="string">"2000:153::2:1"</span>
+      }</span></span>,
+      "<span class="attribute">v6_local_addr</span>": <span class="value"><span class="literal">null</span></span>,
+      "<span class="attribute">v6_mask</span>": <span class="value"><span class="number">24</span></span>,
+      "<span class="attribute">speed</span>": <span class="value"><span class="string">"10000Mb/s"</span>
+    }</span>,
+    {
+      "<span class="attribute">mac</span>": <span class="value"><span class="literal">null</span></span>,
+      "<span class="attribute">name</span>": <span class="value"><span class="string">"a3"</span></span>,
+      "<span class="attribute">display_name</span>": <span class="value"><span class="string">"A3"</span></span>,
+      "<span class="attribute">up</span>": <span class="value"><span class="literal">false</span></span>,
+      "<span class="attribute">v4_addr_count</span>": <span class="value"><span class="number">1000</span></span>,
+      "<span class="attribute">v4_addrs</span>": <span class="value">{
+        "<span class="attribute">begin</span>": <span class="value"><span class="string">"103.0.0.100"</span></span>,
+        "<span class="attribute">end</span>": <span class="value"><span class="string">"103.0.4.75"</span>
+      }</span></span>,
+      "<span class="attribute">v4_dhcp</span>": <span class="value"><span class="literal">false</span></span>,
+      "<span class="attribute">v4_mask</span>": <span class="value"><span class="number">16</span></span>,
+      "<span class="attribute">v6_addr_count</span>": <span class="value"><span class="number">0</span></span>,
+      "<span class="attribute">v6_addrs</span>": <span class="value">{
+        "<span class="attribute">begin</span>": <span class="value"><span class="literal">null</span></span>,
+        "<span class="attribute">end</span>": <span class="value"><span class="literal">null</span>
+      }</span></span>,
+      "<span class="attribute">v6_local_addr</span>": <span class="value"><span class="literal">null</span></span>,
+      "<span class="attribute">v6_mask</span>": <span class="value"><span class="literal">null</span></span>,
+      "<span class="attribute">speed</span>": <span class="value"><span class="string">"10000Mb/s"</span>
+    }</span>,
+    {
+      "<span class="attribute">mac</span>": <span class="value"><span class="literal">null</span></span>,
+      "<span class="attribute">name</span>": <span class="value"><span class="string">"a4"</span></span>,
+      "<span class="attribute">display_name</span>": <span class="value"><span class="string">"A4"</span></span>,
+      "<span class="attribute">up</span>": <span class="value"><span class="literal">false</span></span>,
+      "<span class="attribute">v4_addr_count</span>": <span class="value"><span class="number">1000</span></span>,
+      "<span class="attribute">v4_addrs</span>": <span class="value">{
+        "<span class="attribute">begin</span>": <span class="value"><span class="string">"104.0.0.1"</span></span>,
+        "<span class="attribute">end</span>": <span class="value"><span class="string">"104.0.3.232"</span>
+      }</span></span>,
+      "<span class="attribute">v4_dhcp</span>": <span class="value"><span class="literal">false</span></span>,
+      "<span class="attribute">v4_mask</span>": <span class="value"><span class="number">16</span></span>,
+      "<span class="attribute">v6_addr_count</span>": <span class="value"><span class="number">0</span></span>,
+      "<span class="attribute">v6_addrs</span>": <span class="value">{
+        "<span class="attribute">begin</span>": <span class="value"><span class="literal">null</span></span>,
+        "<span class="attribute">end</span>": <span class="value"><span class="literal">null</span>
+      }</span></span>,
+      "<span class="attribute">v6_local_addr</span>": <span class="value"><span class="literal">null</span></span>,
+      "<span class="attribute">v6_mask</span>": <span class="value"><span class="literal">null</span></span>,
+      "<span class="attribute">speed</span>": <span class="value"><span class="string">"10000Mb/s"</span>
+    }</span>
+  ]</span>,
+  "<span class="attribute">timestamp</span>": <span class="value"><span class="number">1352277222</span>
+}</span>
 
+  </pre>
 
   <!-- build:js scripts/plugins.js -->
   <script src="/lib/jquery.js"></script>

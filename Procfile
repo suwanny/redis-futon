@@ -1,2 +1,2 @@
-redis:    redis-server
-monitor:  rake run
+redis: redis-server
+futon: rake run

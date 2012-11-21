@@ -11,6 +11,7 @@ class MainController
       , {path: "/redis/keys",           http_method: "get",   method: "redis_keys" }
       , {path: "/redis/get/:key",       http_method: "get",   method: "redis_get" }
       , {path: "/redis/set",            http_method: "post",  method: "redis_set" }
+      , {path: "/redis/command",        http_method: "post",  method: "redis_command" }
     ]
     return
   
@@ -43,6 +44,13 @@ class MainController
 
   redis_set: (req, res) ->
     @redis.set req.body.key, req.body.value, (err, data) ->
+      res.json {err: err, resp: data}
+  
+  
+  redis_command: (req, res) ->
+    logger.info "redis_command", req.body
+    @redis.send_command req.body.command, req.body.args, (err, data) ->
+      logger.info "redis_command", data
       res.json {err: err, resp: data}
   
   

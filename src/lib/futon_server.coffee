@@ -36,9 +36,9 @@ class FutonServer
 
   
 
-  start: () ->
-    @app.listen config.LISTEN_PORT
-    logger.info "Server is listening to #{config.LISTEN_PORT}"
+  start: (port=config.LISTEN_PORT) ->
+    @app.listen(port)
+    logger.info "Server is listening to #{port}"
 
 
 module.exports = FutonServer

@@ -26,7 +26,6 @@ class RedisInterface
   
   
   get_keys: (filter="*", callback) ->
-    logger.info "get_keys", filter 
     client = @client
     client.send_command "keys", [filter], (err, keys) ->
       return callback(err) if err 
@@ -45,12 +44,6 @@ class RedisInterface
           callback(err, keys_with_types)
           return
       )
-
-    
-    
-    
-    
-  
   
   get: (key, callback) ->
     @client.get key, callback
@@ -61,7 +54,9 @@ class RedisInterface
   
 
   send_command: (command, args, callback) ->
-    @client.send_command command, args, callback
+    # logger.info "send command ", {command: command, args: args}
+    @client.send_command command, args, (err, data) ->
+      callback(err, data)
   
     
   

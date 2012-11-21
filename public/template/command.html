@@ -1,0 +1,19 @@
+
+<div class="container-fluid">
+  <div class="container">
+
+    <div id="command_console">
+      <form ng-submit="excuteCommand('{{command}}')">
+        Command: <input ng-model="command" class="command_input" >
+        <input type="submit" id="submit" value="Submit" />
+      </form>
+    </div>
+
+    <div id="command_result" class="result_pre">
+      <pre>
+        {{result}}
+      </pre>
+    </div>
+  </div>
+
+</div>

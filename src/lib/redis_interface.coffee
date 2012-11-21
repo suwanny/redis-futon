@@ -9,12 +9,12 @@ class RedisInterface
     
   info: (callback) ->
     @client.info (err, resp) ->
-      return callback(err) if err 
-      lines = resp.split("\n")
+      return callback(err) if err
+      return callback(new Error("Undefined")) unless resp
       lines = resp.trim().split("\n")
       redis_info = _.map(lines, (val) ->
         kv = val.split(":")
-        {key: kv[0], value: kv[1].trim()}
+        {key: kv[0], value: kv[1]?.trim()}
       ) 
       callback(err, redis_info)
   

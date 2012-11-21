@@ -1,10 +1,12 @@
 <div class="container-fluid">
   <div class="row-fluid">
 
-    <div class="span2">
-      <!--Sidebar content-->
-      <p>Current Database: {{getDatabase()}}</p>
-      Search: <input ng-model="query">
+    <div class="span2 ">
+      <div class="left-control">
+        <!--Sidebar content-->
+        <h4>Database-{{getDatabase()}}</h4>
+        Search: <input ng-model="query" class="query-filter">
+      </div>
 
     </div>
     <div class="span10">

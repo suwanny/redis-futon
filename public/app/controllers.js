@@ -13,6 +13,10 @@ function NavCtrl($scope, $http, $rootScope) {
       $rootScope.$emit("db_change", db);
     })
   }
+
+  $scope.getCurrentDatabase = function() {
+    return $rootScope.database;
+  }; 
 }
 
 function InfoCtrl($scope, $http, $rootScope) {
@@ -26,7 +30,7 @@ function InfoCtrl($scope, $http, $rootScope) {
 }
 
 
-function KeysCtrl($scope, $http, $rootScope) {
+function DatabaseCtrl($scope, $http, $rootScope) {
 
   $scope.refresh_data = function() {
     $http.get("/redis/keys").success(function(data){
@@ -47,4 +51,16 @@ function KeysCtrl($scope, $http, $rootScope) {
 }
 
 //MainCtrl.$inject = ['$scope', '$http'];
+
+
+
+function CommandCtrl($scope, $http, $rootScope) {
+
+  $scope.result = "{}";
+  $scope.command = "keys *";
+  $scope.executeCommand = function(command) {
+    console.log("execute: " + command);
+  };
+}
+
 

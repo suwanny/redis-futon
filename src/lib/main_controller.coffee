@@ -50,7 +50,6 @@ class MainController
   redis_command: (req, res) ->
     logger.info "redis_command", req.body
     @redis.send_command req.body.command, req.body.args, (err, data) ->
-      logger.info "redis_command", data
       res.json {err: err, resp: data}
   
   

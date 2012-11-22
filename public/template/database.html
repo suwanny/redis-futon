@@ -5,9 +5,12 @@
   <div class="row-fluid">
 
     <div class="span10">
+
       <!--Body content-->
       <h2>Database-{{getDatabase()}}</h2>
 
+
+      <!-- Command Prompt -->
       <div id="command_slider" class="hidden">
         <div id="command_console">
           <form ng-submit="execute()" >
@@ -23,22 +26,130 @@
         </div>
       </div>
 
-      <table class="table table-striped table-hover">
-        <thead>
-          <tr>
-            <th>Key</th>
-            <th>Type</th>
-            <th>Value</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr ng-repeat="key in redis_keys | filter:query">
-            <td>{{key.key}}</td><td>{{key.type}}</td><td><a href="" class="btn btn-primary">Show Value</a></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
 
+      <ul class="nav nav-tabs">
+        <li class="active" ><a href="#strings" data-toggle="tab" id="tab_strings">Strings</a></li>
+        <li><a href="#lists" data-toggle="tab" id="tab_lists">Lists</a></li>
+        <li><a href="#sets" data-toggle="tab" id="tab_sets">Sets</a></li>
+        <li><a href="#hashes" data-toggle="tab" id="tab_hashes">Hashes</a></li>
+        <li><a href="#sorted_sets" data-toggle="tab" id="tab_sorted_sets">Sorted Sets</a></li>
+      </ul>
+
+      <div class="tab-content">
+
+        <!-- Strings -->
+        <div class="tab-pane active" id="strings">
+          <b>Strings ({{filterByType(redis_keys, 'string').length}})</b>
+          <table class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th>Key</th>
+                <th>Type</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="key in filterByType(redis_keys, 'string') | filter:query">
+                <td>{{key.key}}</td><td>{{key.type}}</td>
+                <td><a href="" class="btn btn-primary" ng-click="showKeyValue(key.type, key.key)">Show Value</a></td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+
+        <!-- Lists -->
+        <div class="tab-pane" id="lists">
+          <b>Lists ({{filterByType(redis_keys, 'list').length}})</b>
+          <table class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th>Key</th>
+                <th>Type</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="key in filterByType(redis_keys, 'list') | filter:query">
+                <td>{{key.key}}</td><td>{{key.type}}</td>
+                <td><a href="" class="btn btn-primary" ng-click="showKeyValue(key.type, key.key)">Show Value</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Sets -->
+        <div class="tab-pane" id="sets">
+          <b>Sets ({{filterByType(redis_keys, 'set').length}})</b>
+          <table class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th>Key</th>
+                <th>Type</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="key in filterByType(redis_keys, 'set') | filter:query">
+                <td>{{key.key}}</td><td>{{key.type}}</td>
+                <td><a href="" class="btn btn-primary" ng-click="showKeyValue(key.type, key.key)">Show Value</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Hashes -->
+        <div class="tab-pane" id="hashes">
+          <b>Hashes ({{filterByType(redis_keys, 'hash').length}})</b>
+          <table class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th>Key</th>
+                <th>Type</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="key in filterByType(redis_keys, 'hash') | filter:query">
+                <td>{{key.key}}</td><td>{{key.type}}</td>
+                <td><a href="" class="btn btn-primary" ng-click="showKeyValue(key.type, key.key)">Show Value</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Sorted Sets -->
+        <div class="tab-pane" id="sorted_sets">
+          <b>Sorted Sets ({{filterByType(redis_keys, 'zset').length}})</b>
+          <table class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th>Key</th>
+                <th>Type</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="key in filterByType(redis_keys, 'zset') | filter:query">
+                <td>{{key.key}}</td><td>{{key.type}}</td>
+                <td><a href="" class="btn btn-primary" ng-click="showKeyValue(key.type, key.key)">Show Value</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+
+      </div> 
+
+
+
+      
+
+
+    </div> <!-- span 10 -->
+
+
+    <!-- Database Control -->
 
     <div class="span2">
       <div class="control">
@@ -54,6 +165,21 @@
 
   </div>
 </div>
+
+
+<div id="showValueModal" class="modal hide fade">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h3>{{show_key}}</h3>
+  </div>
+  <div class="modal-body">
+    <pre class="prettyprint">{{show_result}}</pre>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn close" data-dismiss="modal" aria-hidden="true">Close</a>
+  </div>
+</div>
+
 
 <script>
     jQuery(function() {

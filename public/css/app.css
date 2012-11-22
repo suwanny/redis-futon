@@ -80,7 +80,7 @@ body {
 }
 
 #command_console input[type='text'] {
-  width: 75%;
+  width: 70%;
   font-size: 14px;
   margin-left: 10px;
   margin-right: 10px;
@@ -104,4 +104,46 @@ body {
   width: 150px;
   height: 25px;
 }
+
+/*Modal*/
+/*http://www.revillwebdesign.com/change-the-height-width-and-position-of-a-modal-in-twitter-bootstrap/*/
+#showValueModal {
+  width: 900px; /* SET THE WIDTH OF THE MODAL */
+  margin: -250px 0 0 -450px;
+}
+
+
+#showValueModal .modal-body {
+  max-height: 800px;
+}
+
+/* detail table */
+#showValueModal:focus{
+  outline: none;
+}
+
+.modal-header, .modal-footer{
+  background: #222;
+  -webkit-border-radius: 0 0 0px 0px;
+  -moz-border-radius: 0 0 0px 0px;
+  border-radius: 0 0 0px 0px;
+}
+
+.modal-body h3{
+  color: #007E9E;
+  text-shadow: 0 -1px rgba(0, 0, 0, .2);
+}
+
+.modal-header h1, .modal-header h2, .modal-header h3{
+  text-align: left;
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0,0,0,.5);
+}
+
+
+th{
+  color: #007E9E; 
+}
+
+
 

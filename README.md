@@ -18,7 +18,15 @@ Currenty, this is pretty much an alpha version, but it could become useable over
 
 ## Installation
     
+    // install
     $ npm install redis-futon -g
+
+    // upgrade
+    $ npm update redis-futon -g
+
+    // uninstall 
+    $ npm uninstall redis-futon -g
+
 
 ## Start & Use
 

@@ -25,6 +25,7 @@
   <script src="/app/app.js"></script>
   <script src="/app/controllers.js"></script>
   <script src="/app/database_controller.js"></script>
+  <script src="/app/commands_help_controller.js"></script>
   <script src="/app/filters.js"></script>
   <script src="/app/services.js"></script>
 
@@ -38,11 +39,14 @@
         <div class="container">
 
           <a class="brand" href="#">Redis Futon</a>
-
+          <ul class="nav nav-pills">
+            <li class="disabled"><a href="">Powered by AngularJS, Bootstrap and suwanny</a></li>
+          </ul>
           <ul class="nav pull-right">
             <ul class="nav">
               <li><a href="#/info">Redis Info</a></li>
               <li><a href="#/database">Database-{{getCurrentDatabase()}}</a></li>
+              <li><a href="#/commands">Commands Help</a></li>
               <li><a href=""></a></li>
               
             </ul>
@@ -57,6 +61,7 @@
                 </li>
               </ul>
             </li> <!--dropdown-->
+
           </ul>
 
         </div>

@@ -27,6 +27,38 @@ function DatabaseCtrl($scope, $http, $rootScope) {
     return str;
   }
 
+  var parseCommandArguments = function(list) {
+    // arguments parser ... 
+    var args          = [];
+    var _found_quote  = false;
+    var _str_cache    = "";
+
+    _.each(list, function(ele) {
+      if (_found_quote) {
+        _str_cache  += " " + ele;
+        // if it's the end of a string, unset the flag and push the value.
+        if (ele.charAt(ele.length - 1) === "\"" ) {
+          _found_quote = false;
+          args.push(_str_cache);
+          _str_cache = "";
+        }
+      }
+      else {
+        // is string or not..
+        // if the begin of a string, set the flag and cache the first one.
+        if (ele.charAt(0) === "\"" ) {
+          _found_quote  = true;
+          _str_cache    = ele;
+        }
+        // if not string, just append the value.
+        else {
+          args.push(ele);
+        }
+      }
+    });
+    return args;
+  }
+
   $rootScope.$on('db_change', function (event){
     $scope.refresh_data();
   });
@@ -62,13 +94,10 @@ function DatabaseCtrl($scope, $http, $rootScope) {
   $scope.execute = function() {
     var list    = $scope.command.split(" ");
     var command = list.shift();
-    list        = _.map(list, function(ele) {
+    var args    = _.map(parseCommandArguments(list), function(ele) {
       return escape_quote(ele);
     });
-
-    var data    = {command: command, args: list};
-
-    console.log("execute: " + command);
+    var data    = {command: command, args: args};
     $http.post("/redis/command", data).success(function(data){
       $scope.prev_commands.push($scope.command);
       $scope.command  = "";
@@ -89,16 +118,58 @@ function DatabaseCtrl($scope, $http, $rootScope) {
     }
   };
 
+
+  $scope.jsonToString = json2string; 
+  $scope.show_list_result = [];
+  $scope.show_hash_result = [];
+  $scope.show_set_result = [];
+  $scope.show_zset_result = [];
+
   // Show the value of a key
   $scope.showKeyValue = function(type, key) {
-    console.log("ShowKeyValue key:" + key + ", type:" + type);
-
     if (type === "string") {
       $http.get("/redis/get/" + key).success(function(data){
         $scope.show_key = key;
         $scope.show_result   = json2string(data.resp);
         jQuery('#showValueModal').modal();
       });
+    }
+    else if (type === "list") {
+      $http.get("/redis/list/" + key).success(function(data){
+        $scope.show_key         = key;
+        $scope.show_list_result = _.map(data, function(ele, i) {
+          return {key: i, value: json2string(ele)};
+        });
+        jQuery('#showListModal').modal();
+      });
+    }
+    else if (type === "set") {
+      $http.get("/redis/set/" + key).success(function(data){
+        $scope.show_key        = key;
+        $scope.show_set_result = _.map(data, function(ele, i) {
+          return {key: i, value: ele};
+        });
+        jQuery('#showSetModal').modal();
+      });
+    }
+    else if (type === "hash") {
+      $http.get("/redis/hash/" + key).success(function(data){
+        $scope.show_key         = key;
+        $scope.show_hash_result = _.map(data, function(ele, i) {
+          return {key: i, value: json2string(ele)};
+        });
+        jQuery('#showHashModal').modal();
+      });
+    }
+    else if (type === "zset") {
+      $http.get("/redis/zset/" + key).success(function(data){
+        $scope.show_key         = key;
+        $scope.show_zset_result = _.map(data, function(ele) {
+          return {index: ele.index, score: ele.score, value: json2string(ele.value)};
+        });
+        jQuery('#showSortedSetModal').modal();
+      });
+      
     }
   };
 

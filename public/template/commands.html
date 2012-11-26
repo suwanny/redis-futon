@@ -1,0 +1,81 @@
+<div class="container-fluid">
+  <div class="row-fluid">
+
+    
+    <div class="span10">
+
+      <!--Body content-->
+      <h2> Commands Help </h2>
+
+      <!-- Command Prompt -->
+      <div id="command_slider" class="hidden">
+        <div id="command_console">
+          <form ng-submit="execute()" >
+            Command:
+            <input type="text" ng-model="command" class="command_input" 
+              on-keyup="keypressCallback" 
+            />
+            <input type="submit" class="btn btn-medium btn-primary" />
+          </form>
+        </div>
+        <div id="command_result">
+          <pre class="prettyprint">{{result}}</pre>
+        </div>
+      </div>
+
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th width="100px">Name</th>
+            <th width="200px">Command</th>
+            <th>Return</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="cmd in commands | filter:query">
+            <td><a href="{{cmd.url}}" target="_blank">{{cmd.name}}</a></td>
+            <td>{{cmd.usage}}</td>
+            <td>{{cmd.return_val}}</td>
+            <td >
+              <div ng-bind-html-unsafe="cmd.patterns | checkpatterns"></div>
+              {{cmd.description}} 
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3> Advanced Commands </h3>
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th width="100px">Name</th>
+            <th width="200px">Command</th>
+            <th>Return</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="cmd in advanced_commands | filter:query">
+            <td><a href="{{cmd.url}}" target="_blank">{{cmd.name}}</a></td>
+            <td>{{cmd.usage}}</td>
+            <td>{{cmd.return_val}}</td>
+            <td>{{cmd.description}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+    <div class="span2 ">
+      <div class="left-control">
+        <!--Sidebar content-->
+        <h5>Filter</h5>
+        <input ng-model="query" class="query-filter" placeholder="keyword">
+        <a href="" class="btn btn-medium btn-inverse control-button" ng-click="toggleCommand()">Command Prompt</a>
+      </div>
+
+    </div>
+
+  </div>
+</div>

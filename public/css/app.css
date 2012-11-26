@@ -107,19 +107,32 @@ body {
 
 /*Modal*/
 /*http://www.revillwebdesign.com/change-the-height-width-and-position-of-a-modal-in-twitter-bootstrap/*/
-#showValueModal {
+.value_modal {
   width: 900px; /* SET THE WIDTH OF THE MODAL */
   margin: -250px 0 0 -450px;
-}
-
-
-#showValueModal .modal-body {
-  max-height: 800px;
 }
 
 /* detail table */
 #showValueModal:focus{
   outline: none;
+}
+
+.modal-body {
+  max-height: 450px;
+  margin-bottom: 10px;
+}
+
+.modal-body .table td{
+  line-height: 16px;
+  font-size: 12px;
+  font-family: monospace;
+  font-weight: normal;
+}
+
+pre.prettyprint {
+  margin-bottom: 10px;
+  font-size: 12px;
+  font-family: monospace;
 }
 
 .modal-header, .modal-footer{

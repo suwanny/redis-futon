@@ -12,6 +12,10 @@ class MainController
       , {path: "/redis/get/:key",       http_method: "get",   method: "redis_get" }
       , {path: "/redis/set",            http_method: "post",  method: "redis_set" }
       , {path: "/redis/command",        http_method: "post",  method: "redis_command" }
+      , {path: "/redis/list/:key",      http_method: "get",   method: "redis_get_list" }
+      , {path: "/redis/hash/:key",      http_method: "get",   method: "redis_get_hash" }
+      , {path: "/redis/set/:key",       http_method: "get",   method: "redis_get_set" }
+      , {path: "/redis/zset/:key",      http_method: "get",   method: "redis_get_zset" }
     ]
     return
   
@@ -29,7 +33,6 @@ class MainController
     res.json({database: @redis.database()})
 
   redis_keys: (req, res) ->
-    logger.info "redis_keys", req.params._filter
     filter = req.params._filter || "*"
     redis = @redis
     @redis.get_keys filter, (err, data) ->
@@ -52,6 +55,41 @@ class MainController
     @redis.send_command req.body.command, req.body.args, (err, data) ->
       res.json {err: err, resp: data}
   
+  redis_get_list: (req, res) ->
+    key = req.params.key
+    @redis.client.lrange [key, 0, -1], (err, data) ->
+      if err
+        res.json []
+      else
+        res.json data
+
+  redis_get_set: (req, res) ->
+    key = req.params.key
+    @redis.client.smembers [key], (err, data) ->
+      if err
+        res.json []
+      else
+        res.json data
+  
+  
+  redis_get_hash: (req, res) ->
+    key = req.params.key
+    @redis.client.hgetall [key], (err, data) ->
+      if err
+        res.json {}
+      else
+        res.json data
+  
+  redis_get_zset: (req, res) ->
+    key = req.params.key
+    @redis.client.zrangebyscore [key, "-inf", "+inf", "WITHSCORES"], (err, data) ->
+      if err
+        res.json []
+      else
+        list_by_score = []
+        for val, i in data by 2
+          list_by_score.push({index: i/2, value: val, score: data[i+1]})
+        res.json list_by_score
   
   
   

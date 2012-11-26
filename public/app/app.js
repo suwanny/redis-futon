@@ -4,10 +4,11 @@
 
 /* App Module */
 
-var app = angular.module('futon', []).
+var app = angular.module('futon', ['futonFilters']).
   config(['$routeProvider', function($routeProvider) {
   $routeProvider.
       when('/info', {templateUrl: '/template/info.html',   controller: InfoCtrl}).
+      when('/commands', {templateUrl: '/template/commands.html',   controller: CommandsHelpCtrl}).
       when('/database', {templateUrl: '/template/database.html',   controller: DatabaseCtrl}).
       otherwise({redirectTo: '/info'});
 }]);

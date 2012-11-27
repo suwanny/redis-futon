@@ -13,6 +13,7 @@ class MainController
       , {path: "/redis/set",            http_method: "post",  method: "redis_set" }
       , {path: "/redis/command",        http_method: "post",  method: "redis_command" }
       , {path: "/redis/list/:key",      http_method: "get",   method: "redis_get_list" }
+      , {path: "/redis/list/:key/:index", http_method: "get",   method: "redis_get_list_index" }
       , {path: "/redis/hash/:key",      http_method: "get",   method: "redis_get_hash" }
       , {path: "/redis/set/:key",       http_method: "get",   method: "redis_get_set" }
       , {path: "/redis/zset/:key",      http_method: "get",   method: "redis_get_zset" }
@@ -57,11 +58,27 @@ class MainController
   
   redis_get_list: (req, res) ->
     key = req.params.key
-    @redis.client.lrange [key, 0, -1], (err, data) ->
+    @redis.client.llen [key], (err, data) ->
       if err
         res.json []
       else
-        res.json data
+        len = parseInt(data)
+        res.json [0...len]
+
+  redis_get_list_index: (req, res) ->
+    key   = req.params.key
+    index = req.params.index
+    @redis.client.lindex [key, index], (err, data) ->
+      if err
+        res.json err
+      else
+        try
+          json_data = JSON.parse(data)
+          res.json json_data
+        catch error
+          res.send data
+  
+  
 
   redis_get_set: (req, res) ->
     key = req.params.key

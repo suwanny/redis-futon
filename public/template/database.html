@@ -183,14 +183,14 @@
   </div>
   <div class="modal-body">
     <h5>Length: {{show_list_result.length}}</5>
-    <table class="table table-striped table-hover">
-      <thead><tr><th>Key</th><th>Value</th></tr></thead>
-      <tbody>
-        <tr ng-repeat="val in show_list_result">
-          <td>{{val.key}}</td><td><pre class="prettyprint">{{val.value}}</pre></td>
-        </tr>
-      </tbody>
-    </table>
+    <div>
+      <select ng-model="list_index" class="ng-pristine ng-valid">
+        <option ng-repeat="val in show_list_result" value="{{val}}">{{val}}</option>
+      </select>
+      <a href="" class="btn btn-primary" ng-click="showListValue(show_key, list_index)">Show Value</a>
+    </div>
+    <pre class="prettyprint">{{list_value}}</pre>
+    
   </div>
   <div class="modal-footer">
     <a href="#" class="btn close" data-dismiss="modal" aria-hidden="true">Close</a>

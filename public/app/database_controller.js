@@ -137,9 +137,10 @@ function DatabaseCtrl($scope, $http, $rootScope) {
     else if (type === "list") {
       $http.get("/redis/list/" + key).success(function(data){
         $scope.show_key         = key;
-        $scope.show_list_result = _.map(data, function(ele, i) {
-          return {key: i, value: json2string(ele)};
-        });
+        $scope.show_list_result = data;
+        // $scope.show_list_result = _.map(data, function(ele, i) {
+        //   return {key: i, value: json2string(ele)};
+        // });
         jQuery('#showListModal').modal();
       });
     }
@@ -171,6 +172,15 @@ function DatabaseCtrl($scope, $http, $rootScope) {
       });
       
     }
+  };
+
+  $scope.list_value = "";
+
+  $scope.showListValue = function(key, index) {
+    $http.get("/redis/list/" + key + "/" + index).success(function(data){
+      $scope.list_value = json2string(data);
+      console.dir($scope.list_value);
+    });
   };
 
   $scope.filterByType = function(keys, type) {

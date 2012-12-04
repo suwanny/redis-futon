@@ -1,6 +1,6 @@
 {
   "name": "redis-futon",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Redis Web Interface",
   "main": "index.js",
   "dependencies": {

@@ -6,4 +6,8 @@ var lib  = path.join(path.dirname(fs.realpathSync(__filename)), '../lib');
 
 require(lib + '/lib/config');
 
-new FutonServer().start(parseInt(process.argv.splice(2)[0]) || 5985);
+var listen_port = parseInt(process.argv.splice(2)[0]) || 5985;
+var redis_port  = parseInt(process.argv.splice(2)[1]) || 6379;
+
+new FutonServer(redis_port)
+         .start(listen_port);

@@ -5,9 +5,9 @@ querystring     = require 'querystring'
 MainController  = require('./main_controller')
 
 class FutonServer
-  constructor: () ->
+  constructor: (redis_port) ->
     @app = express()
-    @controller = new MainController()
+    @controller = new MainController(redis_port)
     @configure(@app)
 
   configure: (app) ->
@@ -24,7 +24,7 @@ class FutonServer
     self = this
     for api in @controller.routes
       do (api) ->
-        fn_handler = (req, res) -> 
+        fn_handler = (req, res) ->
           try
             self.controller[api.method](req, res)
           catch error
@@ -34,7 +34,7 @@ class FutonServer
 
     return # configure.
 
-  
+
 
   start: (port=config.LISTEN_PORT) ->
     @app.listen(port)
@@ -42,4 +42,3 @@ class FutonServer
 
 
 module.exports = FutonServer
-
